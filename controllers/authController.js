@@ -1,26 +1,43 @@
-const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
-const { body, validationResult } = require('express-validator');
+const { validationResult } = require('express-validator');
 const User = require('../models/User');
 
 module.exports = {
-  registerUser: async (req, res) => {
+  getAuthenticatedUser: async (req, res) => {
+    try {
+      const user = await User.findById(req.user.id).select('-password');
+      res.json(user);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  },
+
+  authenticateUser: async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { name, email, password } = req.body;
+
+    const { email, password } = req.body;
+
     try {
       let user = await User.findOne({ email });
-      if (user) {
+      if (!user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User alredy exists' }] });
+          .json({ errors: [{ msg: 'Invalid Credentials' }] });
       }
-      user = await createUser(email, user, name, password);
-      await user.save();
+
+      const isMatch = await bcrypt.compare(password, user.password);
+
+      if (!isMatch) {
+        return res
+          .status(400)
+          .json({ errors: [{ msg: 'Invalid Credentials' }] });
+      }
 
       const payload = {
         user: {
@@ -42,20 +59,3 @@ module.exports = {
     }
   },
 };
-
-async function createUser(email, user, name, password) {
-  const avatar = gravatar.url(email, {
-    s: '200',
-    r: 'pg',
-    d: 'mm',
-  });
-  user = new User({
-    name,
-    email,
-    avatar,
-    password,
-  });
-  const salt = await bcrypt.genSalt(10);
-  user.password = await bcrypt.hash(password, salt);
-  return user;
-}

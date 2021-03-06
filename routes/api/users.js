@@ -1,8 +1,6 @@
 const { body, validationResult } = require('express-validator');
 const { registerUser } = require('../../controllers/userController');
 
-const User = require('../../models/User');
-
 const userRoute = (url, app) => {
   // @route  POST api/users
   // @desc   Register user route
