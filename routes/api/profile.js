@@ -293,4 +293,32 @@ router.delete('/education/:edu_id', auth, async (req, res) => {
   }
 });
 
+// @route  GET api/profile/guthub/:username
+// @desc   Get user repos from GitHub
+// @access Public
+router.get('/github/:username', (req, res) => {
+  try {
+    const options = {
+      url: `https://api.github.com/users/${
+        req.params.username
+      }/repos?per_page=5&sort=created:asc&client_id=${config.get(
+        'github_client_id'
+      )}&client_secret=${config.get('github_secret')}`,
+      method: 'get',
+      headers: { 'user-agent': 'node.js' },
+    };
+
+    axios(options)
+      .then(response => {
+        res.json(response.data);
+      })
+      .catch(error => {
+        console.error(error.message);
+        res.status(404).json({ msg: 'No github profile found' });
+      });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 module.exports = router;
