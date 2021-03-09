@@ -1,7 +1,16 @@
 import React, { useEffect } from 'react';
 import setAuthToken from './utils/setAuthToken';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Alert, Landing, Navbar, Login, Register } from './components';
+import {
+  Alert,
+  Landing,
+  Navbar,
+  Login,
+  Register,
+  Dashboard,
+  PrivateRoute,
+} from './components';
+
 import { Error } from './pages';
 //Redux
 import { Provider } from 'react-redux';
@@ -29,6 +38,7 @@ const App = () => {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
+            <PrivateRoute exact path='/dashboard' component={Dashboard} />
             <Route path='*'>
               <Error />
             </Route>

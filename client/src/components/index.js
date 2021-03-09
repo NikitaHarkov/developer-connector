@@ -3,5 +3,7 @@ import Navbar from './layout/Navbar';
 import Alert from './layout/Alert';
 import Login from './auth/Login';
 import Register from './auth/Register';
+import Dashboard from './dashboard/Dashboard';
+import PrivateRoute from './routing/PrivateRoute';
 
-export { Landing, Navbar, Login, Register, Alert };
+export { Landing, Navbar, Login, Register, Alert, Dashboard, PrivateRoute };
