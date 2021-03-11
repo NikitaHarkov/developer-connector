@@ -5,5 +5,15 @@ import Login from './auth/Login';
 import Register from './auth/Register';
 import Dashboard from './dashboard/Dashboard';
 import PrivateRoute from './routing/PrivateRoute';
+import Loading from './layout/Loading';
 
-export { Landing, Navbar, Login, Register, Alert, Dashboard, PrivateRoute };
+export {
+  Landing,
+  Navbar,
+  Login,
+  Register,
+  Alert,
+  Dashboard,
+  PrivateRoute,
+  Loading,
+};

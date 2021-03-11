@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SiCodepen } from 'react-icons/si';
-import { GoSignOut } from 'react-icons/go';
+import { GoSignOut, GoOrganization } from 'react-icons/go';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,6 +10,12 @@ import { logout } from '../../actions/authAction';
 const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
   const authLinks = (
     <ul>
+      <li>
+        <Link to='/dashboard'>
+          <GoOrganization />
+          <span className='hide-sm'>Dashboard</span>
+        </Link>
+      </li>
       <li>
         <a onClick={logout} href='#!'>
           <GoSignOut />
