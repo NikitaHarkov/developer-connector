@@ -7,6 +7,7 @@ import Dashboard from './dashboard/Dashboard';
 import PrivateRoute from './routing/PrivateRoute';
 import Loading from './layout/Loading';
 import CreateProfile from './profile-forms/CreateProfile';
+import EditProfile from './profile-forms/EditProfile';
 
 export {
   Landing,
@@ -18,4 +19,5 @@ export {
   PrivateRoute,
   Loading,
   CreateProfile,
+  EditProfile,
 };

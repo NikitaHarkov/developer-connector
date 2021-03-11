@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import DashboardActions from './DashboardActions';
 import { Link } from 'react-router-dom';
 import { GoPerson } from 'react-icons/go';
 import { connect } from 'react-redux';
@@ -26,7 +27,9 @@ const Dashboard = ({
         Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <>has</>
+        <>
+          <DashboardActions />
+        </>
       ) : (
         <>
           <p>You have not yet setup a profile, please add some info</p>

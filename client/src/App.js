@@ -10,6 +10,7 @@ import {
   Dashboard,
   PrivateRoute,
   CreateProfile,
+  EditProfile,
 } from './components';
 
 import { Error } from './pages';
@@ -40,6 +41,7 @@ const App = () => {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <PrivateRoute exact path='/edit-profile' component={EditProfile} />
             <PrivateRoute
               exact
               path='/create-profile'

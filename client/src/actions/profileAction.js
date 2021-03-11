@@ -22,7 +22,7 @@ export const getCurrentProfile = () => async dispatch => {
 // Create of update profile
 export const createProfile = (
   formData,
-  history,
+  history = {},
   edit = false
 ) => async dispatch => {
   try {
@@ -44,6 +44,7 @@ export const createProfile = (
       history.push('/dashboard');
     }
   } catch (err) {
+    console.log(err);
     const errors = err.response.data.errors;
     if (errors) {
       errors.map(error => dispatch(setAlert(error.msg, 'danger')));
