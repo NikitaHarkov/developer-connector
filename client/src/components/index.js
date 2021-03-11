@@ -6,6 +6,7 @@ import Register from './auth/Register';
 import Dashboard from './dashboard/Dashboard';
 import PrivateRoute from './routing/PrivateRoute';
 import Loading from './layout/Loading';
+import CreateProfile from './profile-forms/CreateProfile';
 
 export {
   Landing,
@@ -16,4 +17,5 @@ export {
   Dashboard,
   PrivateRoute,
   Loading,
+  CreateProfile,
 };

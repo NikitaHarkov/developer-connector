@@ -9,6 +9,7 @@ import {
   Register,
   Dashboard,
   PrivateRoute,
+  CreateProfile,
 } from './components';
 
 import { Error } from './pages';
@@ -39,6 +40,11 @@ const App = () => {
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
+            <PrivateRoute
+              exact
+              path='/create-profile'
+              component={CreateProfile}
+            />
             <Route path='*'>
               <Error />
             </Route>
