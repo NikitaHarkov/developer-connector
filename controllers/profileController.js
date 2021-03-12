@@ -4,6 +4,7 @@ const config = require('config');
 const { validationResult } = require('express-validator');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
+const Post = require('../models/Post');
 
 module.exports = {
   getUserProfile: async (req, res) => {
@@ -119,7 +120,8 @@ module.exports = {
 
   deleteProfileAndUser: async (req, res) => {
     try {
-      // @TODO - remove users posts
+      // Remove user posts
+      await Post.deleteMany({ user: req.user.id });
       // Remove profile
       await Profile.findOneAndRemove({ user: req.user.id });
       // Remove user

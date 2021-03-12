@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { formatDate } from '../../utils/helpers';
+import { deleteEducation } from '../../actions/profileAction';
+import { connect } from 'react-redux';
 
-const Education = ({ education }) => {
+const Education = ({ education, deleteEducation }) => {
   const educations = education.map(edu => (
     <tr key={edu._id}>
       <td>{edu.school}</td>
@@ -12,7 +14,11 @@ const Education = ({ education }) => {
         {edu.to === null ? ' Current' : formatDate(edu.to)}
       </td>
       <td>
-        <button type='button' className='btn btn-danger'>
+        <button
+          type='button'
+          className='btn btn-danger'
+          onClick={() => deleteEducation(edu._id)}
+        >
           Delete
         </button>
       </td>
@@ -39,6 +45,7 @@ const Education = ({ education }) => {
 
 Education.propTypes = {
   education: PropTypes.array.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 };
 
-export default Education;
+export default connect(null, { deleteEducation })(Education);

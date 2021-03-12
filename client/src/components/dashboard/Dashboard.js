@@ -4,7 +4,7 @@ import DashboardActions from './DashboardActions';
 import { Link } from 'react-router-dom';
 import { GoPerson } from 'react-icons/go';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profileAction';
+import { deleteAccount, getCurrentProfile } from '../../actions/profileAction';
 import { Loading } from '../../components';
 import Experience from './Experience';
 import Education from './Education';
@@ -13,6 +13,7 @@ const Dashboard = ({
   getCurrentProfile,
   auth: { user },
   profile: { profile, loading },
+  deleteAccount,
 }) => {
   useEffect(() => {
     getCurrentProfile();
@@ -33,6 +34,15 @@ const Dashboard = ({
           <DashboardActions />
           <Experience experience={profile.experience} />
           <Education education={profile.education} />
+          <div className='my-2'>
+            <button
+              type='button'
+              className='btn btn-danger'
+              onClick={deleteAccount}
+            >
+              <i className='fas fa-user-minus'> Delete My Account</i>
+            </button>
+          </div>
         </>
       ) : (
         <>
@@ -55,6 +65,9 @@ Dashboard.propTypes = {
 const mapStateToProps = state => ({
   auth: state.authReducer,
   profile: state.profileReducer,
+  deleteAccount: PropTypes.func.isRequired,
 });
 
-export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  Dashboard
+);
