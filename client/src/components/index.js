@@ -11,6 +11,7 @@ import EditProfile from './profile-forms/EditProfile';
 import AddExperience from './profile-forms/AddExperience';
 import AddEducation from './profile-forms/AddEducation';
 import Profiles from './profiles/Profiles';
+import Profile from './profile/Profile';
 
 export {
   Landing,
@@ -26,4 +27,5 @@ export {
   AddExperience,
   AddEducation,
   Profiles,
+  Profile,
 };
