@@ -13,6 +13,7 @@ import {
   EditProfile,
   AddExperience,
   AddEducation,
+  Profiles,
 } from './components';
 
 import { Error } from './pages';
@@ -42,6 +43,7 @@ const App = () => {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/register' component={Register} />
+            <Route exact path='/profiles' component={Profiles} />
             <PrivateRoute exact path='/dashboard' component={Dashboard} />
             <PrivateRoute exact path='/edit-profile' component={EditProfile} />
             <PrivateRoute
@@ -59,6 +61,7 @@ const App = () => {
               path='/add-education'
               component={AddEducation}
             />
+
             <Route path='*'>
               <Error />
             </Route>

@@ -1,4 +1,7 @@
 export const formatDate = date => {
-  const newDate = new Date(date);
-  return new Intl.DateTimeFormat('et-EE').format(newDate);
+  return new Intl.DateTimeFormat('et-EE', {
+    year: 'numeric',
+    month: 'long',
+    day: '2-digit',
+  }).format(new Date(date));
 };
