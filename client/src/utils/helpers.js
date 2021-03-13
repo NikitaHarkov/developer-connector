@@ -6,7 +6,6 @@ export const formatDate = date => {
       day: '2-digit',
     }).format(new Date(date));
   } catch (error) {
-    console.log(error);
     return 'Current';
   }
 };
