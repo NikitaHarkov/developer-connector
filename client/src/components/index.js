@@ -13,6 +13,7 @@ import AddEducation from './profile-forms/AddEducation';
 import Profiles from './profiles/Profiles';
 import Profile from './profile/Profile';
 import Posts from './posts/Posts';
+import Post from './post/Post';
 
 export {
   Landing,
@@ -30,4 +31,5 @@ export {
   Profiles,
   Profile,
   Posts,
+  Post,
 };

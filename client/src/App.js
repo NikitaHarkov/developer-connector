@@ -16,6 +16,7 @@ import {
   Profiles,
   Profile,
   Posts,
+  Post,
 } from './components';
 
 import { Error } from './pages';
@@ -65,6 +66,7 @@ const App = () => {
               component={AddEducation}
             />
             <PrivateRoute exact path='/posts' component={Posts} />
+            <PrivateRoute exact path='/posts/:id' component={Post} />
 
             <Route path='*'>
               <Error />
