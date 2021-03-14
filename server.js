@@ -14,6 +14,10 @@ connectDB();
 app.use(express.json({ extented: false }));
 
 //Define Routes
+app.get('/', (req, res) => {
+  res.send('Hello to Dev-Connector API');
+});
+
 userRoute('/api/users', app);
 authRoute('/api/auth', app);
 profileRoute('/api/profile', app);
