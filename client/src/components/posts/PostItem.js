@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { formatDate } from '../../utils/helpers';
-import { addLike, removeLike } from '../../actions/postAction';
+import { addLike, removeLike, deletePost } from '../../actions/postAction';
 
 const PostItem = ({
+  deletePost,
   addLike,
   removeLike,
   auth,
@@ -55,7 +56,11 @@ const PostItem = ({
           )}
         </Link>
         {!auth.loading && user === auth.user._id && (
-          <button type='button' className='btn btn-danger'>
+          <button
+            type='button'
+            className='btn btn-danger'
+            onClick={() => deletePost(_id)}
+          >
             <i className='fas fa-times'></i>
           </button>
         )}
@@ -66,10 +71,15 @@ const PostItem = ({
 
 PostItem.propTypes = {
   auth: PropTypes.object.isRequired,
+  addLike: PropTypes.func.isRequired,
+  removeLike: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.authReducer,
 });
 
-export default connect(mapStateToProps, { addLike, removeLike })(PostItem);
+export default connect(mapStateToProps, { addLike, removeLike, deletePost })(
+  PostItem
+);
