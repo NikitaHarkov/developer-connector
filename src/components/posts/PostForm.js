@@ -15,14 +15,14 @@ const PostForm = ({ addPost }) => {
   return (
     <div className='post-form'>
       <div className='bg-primary p'>
-        <h3>Leave A Comment</h3>
+        <h3>Write Something ...</h3>
       </div>
       <form className='form my-1' onSubmit={submitHandler}>
         <textarea
           name='text'
           cols='30'
           rows='5'
-          placeholder='Comment on this post'
+          placeholder='Write something that interest you'
           value={text}
           onChange={e => setText(e.target.value)}
         ></textarea>
