@@ -20,7 +20,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
     return <Loading />;
   } else if (profile !== null) {
     return (
-      <>
+      <section className='container'>
         <Link to='/profiles' className='btn btn-light'>
           Back To Profiles
         </Link>
@@ -64,7 +64,7 @@ const Profile = ({ getProfileById, profile: { profile, loading }, auth }) => {
             <ProfileGithub username={profile.githubusername} />
           )}
         </div>
-      </>
+      </section>
     );
   }
 };

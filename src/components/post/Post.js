@@ -19,7 +19,7 @@ const Post = ({ getPost, post: { post, loading } }) => {
     return <Loading />;
   } else {
     return (
-      <>
+      <section className='container'>
         <Link to='/posts' className='btn'>
           Back To Posts
         </Link>
@@ -34,7 +34,7 @@ const Post = ({ getPost, post: { post, loading } }) => {
             />
           ))}
         </div>
-      </>
+      </section>
     );
   }
 };

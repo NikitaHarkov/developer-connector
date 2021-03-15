@@ -33,7 +33,7 @@ const AddEducation = ({ addEducation }) => {
     addEducation(formData, history);
   };
   return (
-    <>
+    <section className='container'>
       <h1 className='large text-primary'>Add Your Education</h1>
       <p className='lead'>
         <i className='fas fa-code-branch'></i> Add any school or bootcamp that
@@ -123,7 +123,7 @@ const AddEducation = ({ addEducation }) => {
           Go Back
         </Link>
       </form>
-    </>
+    </section>
   );
 };
 

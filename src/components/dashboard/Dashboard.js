@@ -23,7 +23,7 @@ const Dashboard = ({
   return loading && profile === null ? (
     <Loading />
   ) : (
-    <>
+    <section className='container'>
       <h1 className='large text-primary'>Dashboard</h1>
       <p className='lead'>
         <GoPerson />
@@ -52,7 +52,7 @@ const Dashboard = ({
           </Link>
         </>
       )}
-    </>
+    </section>
   );
 };
 
